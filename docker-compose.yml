@@ -1,0 +1,13 @@
+services:
+  gravity-topology:
+    build: .
+    container_name: gravity-topology
+    ports:
+      - "8050:8050"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - FLASK_ENV=production
+      # 可选：启用 AI 生成
+      # - DEEPSEEK_API_KEY=your_key_here
+    restart: unless-stopped
