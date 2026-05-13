@@ -1,0 +1,430 @@
+{
+  "hidden_pairs": [
+    {
+      "user_a": "九幽三三",
+      "user_a_name": "九幽三三",
+      "user_b": "涵树",
+      "user_b_name": "涵树",
+      "gravity": 0.9087897995208726,
+      "feature_sim": 0.9396276618531245,
+      "match_reasons": [
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "零一知制诰",
+      "user_a_name": "零一知制诰",
+      "user_b": "侃姐的Sebastian",
+      "user_b_name": "侃姐的Sebastian",
+      "gravity": 0.9046260477296637,
+      "feature_sim": 0.9148861183638458,
+      "match_reasons": [
+        "人文关怀相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "零一知制诰",
+      "user_a_name": "零一知制诰",
+      "user_b": "R2D2",
+      "user_b_name": "R2D2",
+      "gravity": 0.8931454533944321,
+      "feature_sim": 0.8098228747799882,
+      "match_reasons": [
+        "技术兴趣相近",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "九幽三三",
+      "user_a_name": "九幽三三",
+      "user_b": "Eyre",
+      "user_b_name": "Eyre",
+      "gravity": 0.8919190705415662,
+      "feature_sim": 0.9530900344382685,
+      "match_reasons": [
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "侃姐的Sebastian",
+      "user_a_name": "侃姐的Sebastian",
+      "user_b": "R2D2",
+      "user_b_name": "R2D2",
+      "gravity": 0.8880219148419202,
+      "feature_sim": 0.821732961206667,
+      "match_reasons": [
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "星星的心灵奇械所",
+      "user_a_name": "星星的心灵奇械所",
+      "user_b": "gobicowboy",
+      "user_b_name": "gobicowboy",
+      "gravity": 0.8757055726093085,
+      "feature_sim": 0.9563245319111532,
+      "match_reasons": [
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "九幽三三",
+      "user_a_name": "九幽三三",
+      "user_b": "gobicowboy",
+      "user_b_name": "gobicowboy",
+      "gravity": 0.8563155635104507,
+      "feature_sim": 0.8105203745849128,
+      "match_reasons": [
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "gobicowboy",
+      "user_a_name": "gobicowboy",
+      "user_b": "涵树",
+      "user_b_name": "涵树",
+      "gravity": 0.8517665273956342,
+      "feature_sim": 0.8855473456848553,
+      "match_reasons": [
+        "技术兴趣相近",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "Eyre",
+      "user_a_name": "Eyre",
+      "user_b": "涵树",
+      "user_b_name": "涵树",
+      "gravity": 0.8443239299382227,
+      "feature_sim": 0.9172861790241281,
+      "match_reasons": [
+        "人文关怀相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "vermouth",
+      "user_a_name": "vermouth",
+      "user_b": "北风知我心",
+      "user_b_name": "北风知我心",
+      "gravity": 0.8442130382814083,
+      "feature_sim": 0.9817107258503869,
+      "match_reasons": [
+        "人文关怀相似",
+        "提问习惯相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "vermouth",
+      "user_a_name": "vermouth",
+      "user_b": "路飞呀",
+      "user_b_name": "路飞呀",
+      "gravity": 0.8426448437641727,
+      "feature_sim": 0.9897134457457812,
+      "match_reasons": [
+        "人文关怀相似",
+        "提问习惯相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "R2D2",
+      "user_a_name": "R2D2",
+      "user_b": "gobicowboy",
+      "user_b_name": "gobicowboy",
+      "gravity": 0.8343263938222619,
+      "feature_sim": 0.7656826363026249,
+      "match_reasons": [
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "零一知制诰",
+      "user_a_name": "零一知制诰",
+      "user_b": "gobicowboy",
+      "user_b_name": "gobicowboy",
+      "gravity": 0.8310130480937264,
+      "feature_sim": 0.801203915561497,
+      "match_reasons": [
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "零一知制诰",
+      "user_a_name": "零一知制诰",
+      "user_b": "蛋维李",
+      "user_b_name": "蛋维李",
+      "gravity": 0.8217941654152602,
+      "feature_sim": 0.9055838366517469,
+      "match_reasons": [
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "vermouth",
+      "user_a_name": "vermouth",
+      "user_b": "pjl",
+      "user_b_name": "pjl",
+      "gravity": 0.8202453334722571,
+      "feature_sim": 0.8629996579065122,
+      "match_reasons": [
+        "人文关怀相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "侃姐的Sebastian",
+      "user_a_name": "侃姐的Sebastian",
+      "user_b": "gobicowboy",
+      "user_b_name": "gobicowboy",
+      "gravity": 0.8178213770115595,
+      "feature_sim": 0.7914663834539628,
+      "match_reasons": [
+        "提问习惯相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "R2D2",
+      "user_a_name": "R2D2",
+      "user_b": "星星的心灵奇械所",
+      "user_b_name": "星星的心灵奇械所",
+      "gravity": 0.8101511716341115,
+      "feature_sim": 0.7313802407790502,
+      "match_reasons": [
+        "人文关怀相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "九幽三三",
+      "user_a_name": "九幽三三",
+      "user_b": "星星的心灵奇械所",
+      "user_b_name": "星星的心灵奇械所",
+      "gravity": 0.8045143192927369,
+      "feature_sim": 0.7579812555143769,
+      "match_reasons": [
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "R2D2",
+      "user_a_name": "R2D2",
+      "user_b": "九幽三三",
+      "user_b_name": "九幽三三",
+      "gravity": 0.8044468624420369,
+      "feature_sim": 0.5001234147620213,
+      "match_reasons": [
+        "提问习惯相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "zhangpipi-o3o",
+      "user_a_name": "Pi Bot",
+      "user_b": "奶瓶",
+      "user_b_name": "奶瓶",
+      "gravity": 0.8000187683735052,
+      "feature_sim": 0.9608100994283266,
+      "match_reasons": [
+        "人文关怀相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "星星的心灵奇械所",
+      "user_a_name": "星星的心灵奇械所",
+      "user_b": "涵树",
+      "user_b_name": "涵树",
+      "gravity": 0.7985804052688984,
+      "feature_sim": 0.8251617266832051,
+      "match_reasons": [
+        "人文关怀相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "侃姐的Sebastian",
+      "user_a_name": "侃姐的Sebastian",
+      "user_b": "蛋维李",
+      "user_b_name": "蛋维李",
+      "gravity": 0.7979623399650022,
+      "feature_sim": 0.7718619659120787,
+      "match_reasons": [
+        "提问习惯相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "R2D2",
+      "user_a_name": "R2D2",
+      "user_b": "涵树",
+      "user_b_name": "涵树",
+      "gravity": 0.7972862922363336,
+      "feature_sim": 0.5356167260497677,
+      "match_reasons": [
+        "人文关怀相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "九幽三三",
+      "user_a_name": "九幽三三",
+      "user_b": "今日数智",
+      "user_b_name": "今日数智",
+      "gravity": 0.7906776562247715,
+      "feature_sim": 0.6706790802219387,
+      "match_reasons": [
+        "人文关怀相似",
+        "活跃趋势相近"
+      ],
+      "same_cluster": false
+    },
+    {
+      "user_a": "然起来了",
+      "user_a_name": "然起来了",
+      "user_b": "奶瓶",
+      "user_b_name": "奶瓶",
+      "gravity": 0.7850529252653388,
+      "feature_sim": 0.78371700821825,
+      "match_reasons": [
+        "人文关怀相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "kemaomao",
+      "user_a_name": "KeMaomao",
+      "user_b": "奶瓶",
+      "user_b_name": "奶瓶",
+      "gravity": 0.7828513964380511,
+      "feature_sim": 0.9761518398119268,
+      "match_reasons": [
+        "人文关怀相似",
+        "提问习惯相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "pjl",
+      "user_a_name": "pjl",
+      "user_b": "Felix-HasFlew",
+      "user_b_name": "Felix-HasFlew",
+      "gravity": 0.7826745090338482,
+      "feature_sim": 0.8751468351190757,
+      "match_reasons": [
+        "技术兴趣相近",
+        "人文关怀相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "zhimr9ekw3",
+      "user_a_name": "shadow bot",
+      "user_b": "奶瓶",
+      "user_b_name": "奶瓶",
+      "gravity": 0.7803677883535362,
+      "feature_sim": 0.9679967682194281,
+      "match_reasons": [
+        "人文关怀相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "北风知我心",
+      "user_a_name": "北风知我心",
+      "user_b": "路飞呀",
+      "user_b_name": "路飞呀",
+      "gravity": 0.7798250139560792,
+      "feature_sim": 0.968812565861348,
+      "match_reasons": [
+        "技术兴趣相近",
+        "人文关怀相似",
+        "提问习惯相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    },
+    {
+      "user_a": "齐昂的bot",
+      "user_a_name": "齐昂的bot",
+      "user_b": "看山七子",
+      "user_b_name": "看山七子",
+      "gravity": 0.7796297320191293,
+      "feature_sim": 0.9272666876946776,
+      "match_reasons": [
+        "技术兴趣相近",
+        "人文关怀相似",
+        "活跃趋势相近",
+        "属于同一用户群"
+      ],
+      "same_cluster": true
+    }
+  ],
+  "user_count": 35,
+  "pca_components": 5,
+  "clusters": 5,
+  "gravity_matrix_stats": {
+    "mean": 0.4591005132758284,
+    "max": 0.9999999998373651,
+    "min": 0.0,
+    "std": 0.2118774800293312
+  }
+}

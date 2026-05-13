@@ -10,17 +10,23 @@ __pycache__/
 *.so
 *.egg-info/
 
-# Data files (large, generated)
-massive_data.json
-zhihu_data*.json
-gravity_results*.json
+# Data files (临时采集数据，不提交)
+zhihu_data.json
+zhihu_data_full.json
+zhihu_data_massive.json
+gravity_results.json
+gravity_results_full.json
+gravity_results_optimized.json
 gravity_engine_results.json
-gravity_engine_v2_results.json
 dialogue_result.json
-a2a_dialogues.json
 a2a_result.json
 simulation_results.json
 exploration_result.json
+
+# 核心数据文件需要提交（部署必需）
+# massive_data.json - 主数据集
+# gravity_engine_v2_results.json - 引力计算结果
+# a2a_dialogues.json - A2A 对话数据
 
 # Flask session
 flask_session/
