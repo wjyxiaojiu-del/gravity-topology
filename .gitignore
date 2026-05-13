@@ -1,0 +1,47 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+
+# Data files (large, generated)
+massive_data.json
+zhihu_data*.json
+gravity_results*.json
+gravity_engine_results.json
+gravity_engine_v2_results.json
+dialogue_result.json
+a2a_dialogues.json
+a2a_result.json
+simulation_results.json
+exploration_result.json
+
+# Flask session
+flask_session/
+
+# Node
+node_modules/
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Playwright
+.playwright-cli/
+
+# Deploy
+.vercel

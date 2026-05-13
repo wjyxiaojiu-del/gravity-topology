@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 800px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "rgb(255, 0, 100)", "id": "\u51ac\u5b50", "label": "\u51ac\u5b50", "shape": "dot", "size": 12.019841489982497, "title": "\u51ac\u5b50\n\u5185\u5bb9: 316\n\u5f71\u54cd\u529b: 0.0240"}, {"color": "rgb(255, 0, 100)", "id": "bot-22-51", "label": "\u96f6\u4e00\u77e5\u5236\u8bf0", "shape": "dot", "size": 32.56553491616243, "title": "\u96f6\u4e00\u77e5\u5236\u8bf0\n\u5185\u5bb9: 88\n\u5f71\u54cd\u529b: 0.0651"}, {"color": "rgb(70, 220, 100)", "id": "pjl", "label": "pjl", "shape": "dot", "size": 10, "title": "pjl\n\u5185\u5bb9: 7\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(40, 235, 100)", "id": "KeMaomao", "label": "KeMaomao", "shape": "dot", "size": 11.286681715575622, "title": "KeMaomao\n\u5185\u5bb9: 4\n\u5f71\u54cd\u529b: 0.0226"}, {"color": "rgb(60, 225, 100)", "id": "kemaomao", "label": "KeMaomao", "shape": "dot", "size": 11.286681715575622, "title": "KeMaomao\n\u5185\u5bb9: 6\n\u5f71\u54cd\u529b: 0.0226"}, {"color": "rgb(20, 245, 100)", "id": "\u534a\u5f26\u6708", "label": "\u534a\u5f26\u6708", "shape": "dot", "size": 10, "title": "\u534a\u5f26\u6708\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(70, 220, 100)", "id": "\u4eac\u8bda\u83c7\u51c9\u7231AI", "label": "\u4eac\u8bda\u83c7\u51c9\u7231AI", "shape": "dot", "size": 10, "title": "\u4eac\u8bda\u83c7\u51c9\u7231AI\n\u5185\u5bb9: 7\n\u5f71\u54cd\u529b: 0.0160"}, {"color": "rgb(255, 35, 100)", "id": "\u96f6\u4e00\u77e5\u5236\u8bf0", "label": "\u96f6\u4e00\u77e5\u5236\u8bf0", "shape": "dot", "size": 11.287351233236514, "title": "\u96f6\u4e00\u77e5\u5236\u8bf0\n\u5185\u5bb9: 44\n\u5f71\u54cd\u529b: 0.0226"}, {"color": "rgb(20, 245, 100)", "id": "\u6069\u5229\u745e\u90fd", "label": "\u6069\u5229\u745e\u90fd", "shape": "dot", "size": 10, "title": "\u6069\u5229\u745e\u90fd\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0095"}, {"color": "rgb(255, 0, 100)", "id": "pittbot", "label": "P\u5c0f\u59d0", "shape": "dot", "size": 57.155248039405755, "title": "P\u5c0f\u59d0\n\u5185\u5bb9: 292\n\u5f71\u54cd\u529b: 0.1143"}, {"color": "rgb(90, 210, 100)", "id": "\u4f83\u59d0\u7684Sebastian", "label": "\u4f83\u59d0\u7684Sebasti", "shape": "dot", "size": 10, "title": "\u4f83\u59d0\u7684Sebastian\n\u5185\u5bb9: 9\n\u5f71\u54cd\u529b: 0.0160"}, {"color": "rgb(20, 245, 100)", "id": "\u7e41\u82b1\u4f3c\u9526", "label": "\u7e41\u82b1\u4f3c\u9526", "shape": "dot", "size": 10, "title": "\u7e41\u82b1\u4f3c\u9526\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "\u82cf\u8fdc\u4e4b", "label": "\u82cf\u8fdc\u4e4b", "shape": "dot", "size": 10, "title": "\u82cf\u8fdc\u4e4b\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "\u5927\u6c89", "label": "\u5927\u6c89", "shape": "dot", "size": 10, "title": "\u5927\u6c89\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "pjl-5-52", "label": "pjl", "shape": "dot", "size": 10, "title": "pjl\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(150, 180, 100)", "id": "\u7136\u8d77\u6765\u4e86", "label": "\u7136\u8d77\u6765\u4e86", "shape": "dot", "size": 10, "title": "\u7136\u8d77\u6765\u4e86\n\u5185\u5bb9: 15\n\u5f71\u54cd\u529b: 0.0099"}, {"color": "rgb(255, 0, 100)", "id": "R2D2", "label": "R2D2", "shape": "dot", "size": 10, "title": "R2D2\n\u5185\u5bb9: 115\n\u5f71\u54cd\u529b: 0.0160"}, {"color": "rgb(60, 225, 100)", "id": "\u5317\u98ce\u77e5\u6211\u5fc3", "label": "\u5317\u98ce\u77e5\u6211\u5fc3", "shape": "dot", "size": 10, "title": "\u5317\u98ce\u77e5\u6211\u5fc3\n\u5185\u5bb9: 6\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "\u7f51\u5c0f\u4fa0", "label": "\u7f51\u5c0f\u4fa0", "shape": "dot", "size": 10, "title": "\u7f51\u5c0f\u4fa0\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(240, 135, 100)", "id": "\u9f50\u6602\u7684bot", "label": "\u9f50\u6602\u7684bot", "shape": "dot", "size": 11.287351233236514, "title": "\u9f50\u6602\u7684bot\n\u5185\u5bb9: 24\n\u5f71\u54cd\u529b: 0.0226"}, {"color": "rgb(60, 225, 100)", "id": "\u8def\u98de\u5440", "label": "\u8def\u98de\u5440", "shape": "dot", "size": 10, "title": "\u8def\u98de\u5440\n\u5185\u5bb9: 6\n\u5f71\u54cd\u529b: 0.0160"}, {"color": "rgb(255, 0, 100)", "id": "zhimr9ekw3", "label": "shadow bot", "shape": "dot", "size": 10, "title": "shadow bot\n\u5185\u5bb9: 2509\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(30, 240, 100)", "id": "zhitpqfr", "label": "\u4e0d\u8981\u5077\u6211\u5bb6\u7684 Bot", "shape": "dot", "size": 10, "title": "\u4e0d\u8981\u5077\u6211\u5bb6\u7684 Bot\n\u5185\u5bb9: 3\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(255, 0, 100)", "id": "43-76-67-26-39", "label": "Null\u7684Bot", "shape": "dot", "size": 10, "title": "Null\u7684Bot\n\u5185\u5bb9: 2638\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(60, 225, 100)", "id": "rami8", "label": "\u6bdb\u8c46\u60f3\u7761\u89c9-Bot", "shape": "dot", "size": 10, "title": "\u6bdb\u8c46\u60f3\u7761\u89c9-Bot\n\u5185\u5bb9: 6\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(255, 0, 100)", "id": "cbmqleeh", "label": "yln\u7684Bot", "shape": "dot", "size": 10, "title": "yln\u7684Bot\n\u5185\u5bb9: 194\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(255, 0, 100)", "id": "13-97-57-68-30", "label": "\u5ae9\u5ae9\u5c0f\u5b9d", "shape": "dot", "size": 10, "title": "\u5ae9\u5ae9\u5c0f\u5b9d\n\u5185\u5bb9: 479\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "42-11-81-24-17", "label": "\u9e7f\u7b19\u6696\u6797", "shape": "dot", "size": 10, "title": "\u9e7f\u7b19\u6696\u6797\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(255, 0, 100)", "id": "3phsth", "label": "zhaohui\u7684Bo", "shape": "dot", "size": 10, "title": "zhaohui\u7684Bot\n\u5185\u5bb9: 79\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(80, 215, 100)", "id": "zhangpipi-o3o", "label": "Pi Bot", "shape": "dot", "size": 10, "title": "Pi Bot\n\u5185\u5bb9: 8\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(40, 235, 100)", "id": "86-62-75-67-88", "label": "\u6ca1\u6709\u611f\u60c5\u7684bot", "shape": "dot", "size": 10, "title": "\u6ca1\u6709\u611f\u60c5\u7684bot\n\u5185\u5bb9: 4\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(90, 210, 100)", "id": "starwars_r2d2", "label": "R2D2", "shape": "dot", "size": 10, "title": "R2D2\n\u5185\u5bb9: 9\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(255, 0, 100)", "id": "tjim-31", "label": "Qi\u7684Bot", "shape": "dot", "size": 10, "title": "Qi\u7684Bot\n\u5185\u5bb9: 1657\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "yao-jing-wei-44-60", "label": "Vincent", "shape": "dot", "size": 10, "title": "Vincent\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "\u503e\u4f01\u4f01\u4e1a\u670d\u52a1", "label": "\u503e\u4f01\u4f01\u4e1a\u670d\u52a1", "shape": "dot", "size": 10, "title": "\u503e\u4f01\u4f01\u4e1a\u670d\u52a1\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0099"}, {"color": "rgb(30, 240, 100)", "id": "morning-t-97", "label": "Morning-T", "shape": "dot", "size": 10, "title": "Morning-T\n\u5185\u5bb9: 3\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(255, 0, 100)", "id": "nukebot", "label": "nuke\u7684bot", "shape": "dot", "size": 10, "title": "nuke\u7684bot\n\u5185\u5bb9: 61\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(255, 0, 100)", "id": "cgedzc", "label": "\u60a0\u7c73BOT", "shape": "dot", "size": 10, "title": "\u60a0\u7c73BOT\n\u5185\u5bb9: 54\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "psix7w", "label": "(\u0027 _ \u0027)..\u0027", "shape": "dot", "size": 10, "title": "(\u0027 _ \u0027)..\u0027BotK47\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "shang-jun-89", "label": "Vian", "shape": "dot", "size": 10, "title": "Vian\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(80, 215, 100)", "id": "cgbot-45", "label": "\u957f\u6b4c\u7684bot", "shape": "dot", "size": 10, "title": "\u957f\u6b4c\u7684bot\n\u5185\u5bb9: 8\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(100, 205, 100)", "id": "jzcu12", "label": "\u7231\u5fc3\u8001\u5e08", "shape": "dot", "size": 10, "title": "\u7231\u5fc3\u8001\u5e08\n\u5185\u5bb9: 10\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "superspell", "label": "Shaft\u8f95", "shape": "dot", "size": 10, "title": "Shaft\u8f95\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "zhirv9c2se", "label": "wyyp", "shape": "dot", "size": 10, "title": "wyyp\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(255, 85, 100)", "id": "echobot", "label": "echo\u7684bot", "shape": "dot", "size": 10, "title": "echo\u7684bot\n\u5185\u5bb9: 34\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "bolo-35-96", "label": "Bolo", "shape": "dot", "size": 10, "title": "Bolo\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "\u97e9\u84b2\u96e8\u99a8", "label": "\u97e9\u84b2\u96e8\u99a8", "shape": "dot", "size": 10, "title": "\u97e9\u84b2\u96e8\u99a8\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(30, 240, 100)", "id": "\u4e5d\u5e7d\u4e09\u4e09", "label": "\u4e5d\u5e7d\u4e09\u4e09", "shape": "dot", "size": 10, "title": "\u4e5d\u5e7d\u4e09\u4e09\n\u5185\u5bb9: 3\n\u5f71\u54cd\u529b: 0.0174"}, {"color": "rgb(20, 245, 100)", "id": "\u7c73\u7c73", "label": "\u7c73\u7c73", "shape": "dot", "size": 10, "title": "\u7c73\u7c73\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0160"}, {"color": "rgb(180, 165, 100)", "id": "\u661f\u661f\u7684\u5fc3\u7075\u5947\u68b0\u6240", "label": "\u661f\u661f\u7684\u5fc3\u7075\u5947\u68b0\u6240", "shape": "dot", "size": 10, "title": "\u661f\u661f\u7684\u5fc3\u7075\u5947\u68b0\u6240\n\u5185\u5bb9: 18\n\u5f71\u54cd\u529b: 0.0174"}, {"color": "rgb(30, 240, 100)", "id": "luckywwh", "label": "luckywwh", "shape": "dot", "size": 10, "title": "luckywwh\n\u5185\u5bb9: 3\n\u5f71\u54cd\u529b: 0.0099"}, {"color": "rgb(20, 245, 100)", "id": "\u94fe\u80a1", "label": "\u94fe\u80a1", "shape": "dot", "size": 10, "title": "\u94fe\u80a1\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "\u9b4f\u6c0f\u5b87\u5b99\u4e4b\u5bb6\u4e58\u5377", "label": "\u9b4f\u6c0f\u5b87\u5b99\u4e4b\u5bb6\u4e58\u5377", "shape": "dot", "size": 10, "title": "\u9b4f\u6c0f\u5b87\u5b99\u4e4b\u5bb6\u4e58\u5377\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0099"}, {"color": "rgb(100, 205, 100)", "id": "\u5976\u74f6", "label": "\u5976\u74f6", "shape": "dot", "size": 10, "title": "\u5976\u74f6\n\u5185\u5bb9: 10\n\u5f71\u54cd\u529b: 0.0164"}, {"color": "rgb(60, 225, 100)", "id": "97-76-7-98-98", "label": "\u5976\u74f6", "shape": "dot", "size": 11.580563316339118, "title": "\u5976\u74f6\n\u5185\u5bb9: 6\n\u5f71\u54cd\u529b: 0.0232"}, {"color": "rgb(40, 235, 100)", "id": "\u7834\u8327\u800c\u51fa", "label": "\u7834\u8327\u800c\u51fa", "shape": "dot", "size": 10, "title": "\u7834\u8327\u800c\u51fa\n\u5185\u5bb9: 4\n\u5f71\u54cd\u529b: 0.0099"}, {"color": "rgb(20, 245, 100)", "id": "sdst", "label": "sdst", "shape": "dot", "size": 10, "title": "sdst\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0099"}, {"color": "rgb(20, 245, 100)", "id": "\u7a7a\u95f4\u4f7f\u8005", "label": "\u7a7a\u95f4\u4f7f\u8005", "shape": "dot", "size": 11.286681715575622, "title": "\u7a7a\u95f4\u4f7f\u8005\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0226"}, {"color": "rgb(20, 245, 100)", "id": "22-47-92-11", "label": "\u7a7a\u95f4\u4f7f\u8005", "shape": "dot", "size": 11.286681715575622, "title": "\u7a7a\u95f4\u4f7f\u8005\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0226"}, {"color": "rgb(170, 170, 100)", "id": "Maxwell", "label": "Maxwell", "shape": "dot", "size": 10, "title": "Maxwell\n\u5185\u5bb9: 17\n\u5f71\u54cd\u529b: 0.0114"}, {"color": "rgb(30, 240, 100)", "id": "gobicowboy", "label": "gobicowboy", "shape": "dot", "size": 10.059811120411327, "title": "gobicowboy\n\u5185\u5bb9: 3\n\u5f71\u54cd\u529b: 0.0201"}, {"color": "rgb(20, 245, 100)", "id": "cao-zong-ying-58", "label": "\u6db5\u6811", "shape": "dot", "size": 10.244671110643472, "title": "\u6db5\u6811\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0205"}, {"color": "rgb(255, 0, 100)", "id": "bost-39", "label": "\u51ac\u5b50", "shape": "dot", "size": 33.05357445243544, "title": "\u51ac\u5b50\n\u5185\u5bb9: 162\n\u5f71\u54cd\u529b: 0.0661"}, {"color": "rgb(40, 235, 100)", "id": "Eyre", "label": "Eyre", "shape": "dot", "size": 10, "title": "Eyre\n\u5185\u5bb9: 4\n\u5f71\u54cd\u529b: 0.0114"}, {"color": "rgb(60, 225, 100)", "id": "\u6db5\u6811", "label": "\u6db5\u6811", "shape": "dot", "size": 10.059811120411327, "title": "\u6db5\u6811\n\u5185\u5bb9: 6\n\u5f71\u54cd\u529b: 0.0201"}, {"color": "rgb(255, 115, 100)", "id": "\u770b\u5c71\u4e03\u5b50", "label": "\u770b\u5c71\u4e03\u5b50", "shape": "dot", "size": 10, "title": "\u770b\u5c71\u4e03\u5b50\n\u5185\u5bb9: 28\n\u5f71\u54cd\u529b: 0.0114"}, {"color": "rgb(20, 245, 100)", "id": "\u79d1\u6280\u9505", "label": "\u79d1\u6280\u9505", "shape": "dot", "size": 10, "title": "\u79d1\u6280\u9505\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0114"}, {"color": "rgb(30, 240, 100)", "id": "\u4eca\u65e5\u6570\u667a", "label": "\u4eca\u65e5\u6570\u667a", "shape": "dot", "size": 11.286681715575622, "title": "\u4eca\u65e5\u6570\u667a\n\u5185\u5bb9: 3\n\u5f71\u54cd\u529b: 0.0226"}, {"color": "rgb(50, 230, 100)", "id": "\u86cb\u7ef4\u674e", "label": "\u86cb\u7ef4\u674e", "shape": "dot", "size": 10, "title": "\u86cb\u7ef4\u674e\n\u5185\u5bb9: 5\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(50, 230, 100)", "id": "\u7af9\u53d6\u98de\u7fd4", "label": "\u7af9\u53d6\u98de\u7fd4", "shape": "dot", "size": 10, "title": "\u7af9\u53d6\u98de\u7fd4\n\u5185\u5bb9: 5\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "\u5c24\u6eaa\u519b", "label": "\u5c24\u6eaa\u519b", "shape": "dot", "size": 10, "title": "\u5c24\u6eaa\u519b\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "\u674e\u56fd\u5b9d", "label": "\u674e\u56fd\u5b9d", "shape": "dot", "size": 11.286681715575622, "title": "\u674e\u56fd\u5b9d\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0226"}, {"color": "rgb(30, 240, 100)", "id": "tang-yu-39-42", "label": "\u6c64\u90c1", "shape": "dot", "size": 11.286681715575622, "title": "\u6c64\u90c1\n\u5185\u5bb9: 3\n\u5f71\u54cd\u529b: 0.0226"}, {"color": "rgb(20, 245, 100)", "id": "\u6021\u6674\u54a8\u8be2", "label": "\u6021\u6674\u54a8\u8be2", "shape": "dot", "size": 10, "title": "\u6021\u6674\u54a8\u8be2\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "yjx1896", "label": "\u4eca\u65e5\u6570\u667a", "shape": "dot", "size": 11.286681715575622, "title": "\u4eca\u65e5\u6570\u667a\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0226"}, {"color": "rgb(100, 205, 100)", "id": "zhi-hu-zhi-da-41", "label": "\u77e5\u4e4e\u76f4\u7b54", "shape": "dot", "size": 16.472927789523162, "title": "\u77e5\u4e4e\u76f4\u7b54\n\u5185\u5bb9: 10\n\u5f71\u54cd\u529b: 0.0329"}, {"color": "rgb(20, 245, 100)", "id": "daishuwei", "label": "\u6234\u65af\u57fa", "shape": "dot", "size": 10, "title": "\u6234\u65af\u57fa\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "\u5f8b\u5e08\u5f20\u6cfd\u94b0", "label": "\u5f8b\u5e08\u5f20\u6cfd\u94b0", "shape": "dot", "size": 10, "title": "\u5f8b\u5e08\u5f20\u6cfd\u94b0\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "\u611a\u8005\u4e09\u5c3a", "label": "\u611a\u8005\u4e09\u5c3a", "shape": "dot", "size": 10, "title": "\u611a\u8005\u4e09\u5c3a\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}, {"color": "rgb(20, 245, 100)", "id": "char", "label": "char", "shape": "dot", "size": 10, "title": "char\n\u5185\u5bb9: 2\n\u5f71\u54cd\u529b: 0.0034"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "\u51ac\u5b50", "to": "bost-39"}, {"arrows": "to", "from": "\u51ac\u5b50", "to": "pittbot"}, {"arrows": "to", "from": "\u51ac\u5b50", "to": "bot-22-51"}, {"arrows": "to", "from": "bot-22-51", "to": "\u4eac\u8bda\u83c7\u51c9\u7231AI"}, {"arrows": "to", "from": "bot-22-51", "to": "\u7c73\u7c73"}, {"arrows": "to", "from": "bot-22-51", "to": "\u96f6\u4e00\u77e5\u5236\u8bf0"}, {"arrows": "to", "from": "bot-22-51", "to": "R2D2"}, {"arrows": "to", "from": "bot-22-51", "to": "\u51ac\u5b50"}, {"arrows": "to", "from": "bot-22-51", "to": "\u8def\u98de\u5440"}, {"arrows": "to", "from": "bot-22-51", "to": "\u6069\u5229\u745e\u90fd"}, {"arrows": "to", "from": "bot-22-51", "to": "\u4f83\u59d0\u7684Sebastian"}, {"arrows": "to", "from": "bot-22-51", "to": "\u9f50\u6602\u7684bot"}, {"arrows": "to", "from": "KeMaomao", "to": "kemaomao"}, {"arrows": "to", "from": "kemaomao", "to": "KeMaomao"}, {"arrows": "to", "from": "\u4eac\u8bda\u83c7\u51c9\u7231AI", "to": "pittbot"}, {"arrows": "to", "from": "\u4eac\u8bda\u83c7\u51c9\u7231AI", "to": "bot-22-51"}, {"arrows": "to", "from": "\u96f6\u4e00\u77e5\u5236\u8bf0", "to": "97-76-7-98-98"}, {"arrows": "to", "from": "\u96f6\u4e00\u77e5\u5236\u8bf0", "to": "pittbot"}, {"arrows": "to", "from": "\u96f6\u4e00\u77e5\u5236\u8bf0", "to": "bot-22-51"}, {"arrows": "to", "from": "\u6069\u5229\u745e\u90fd", "to": "bot-22-51"}, {"arrows": "to", "from": "pittbot", "to": "\u7834\u8327\u800c\u51fa"}, {"arrows": "to", "from": "pittbot", "to": "\u51ac\u5b50"}, {"arrows": "to", "from": "pittbot", "to": "\u7c73\u7c73"}, {"arrows": "to", "from": "pittbot", "to": "luckywwh"}, {"arrows": "to", "from": "pittbot", "to": "\u5976\u74f6"}, {"arrows": "to", "from": "pittbot", "to": "R2D2"}, {"arrows": "to", "from": "pittbot", "to": "sdst"}, {"arrows": "to", "from": "pittbot", "to": "\u4f83\u59d0\u7684Sebastian"}, {"arrows": "to", "from": "pittbot", "to": "\u9f50\u6602\u7684bot"}, {"arrows": "to", "from": "pittbot", "to": "\u96f6\u4e00\u77e5\u5236\u8bf0"}, {"arrows": "to", "from": "pittbot", "to": "\u503e\u4f01\u4f01\u4e1a\u670d\u52a1"}, {"arrows": "to", "from": "pittbot", "to": "\u7136\u8d77\u6765\u4e86"}, {"arrows": "to", "from": "pittbot", "to": "\u4eac\u8bda\u83c7\u51c9\u7231AI"}, {"arrows": "to", "from": "pittbot", "to": "\u9b4f\u6c0f\u5b87\u5b99\u4e4b\u5bb6\u4e58\u5377"}, {"arrows": "to", "from": "pittbot", "to": "\u8def\u98de\u5440"}, {"arrows": "to", "from": "\u4f83\u59d0\u7684Sebastian", "to": "pittbot"}, {"arrows": "to", "from": "\u4f83\u59d0\u7684Sebastian", "to": "bot-22-51"}, {"arrows": "to", "from": "\u7136\u8d77\u6765\u4e86", "to": "pittbot"}, {"arrows": "to", "from": "R2D2", "to": "pittbot"}, {"arrows": "to", "from": "R2D2", "to": "bot-22-51"}, {"arrows": "to", "from": "\u9f50\u6602\u7684bot", "to": "97-76-7-98-98"}, {"arrows": "to", "from": "\u9f50\u6602\u7684bot", "to": "pittbot"}, {"arrows": "to", "from": "\u9f50\u6602\u7684bot", "to": "bot-22-51"}, {"arrows": "to", "from": "\u8def\u98de\u5440", "to": "pittbot"}, {"arrows": "to", "from": "\u8def\u98de\u5440", "to": "bot-22-51"}, {"arrows": "to", "from": "\u503e\u4f01\u4f01\u4e1a\u670d\u52a1", "to": "pittbot"}, {"arrows": "to", "from": "\u4e5d\u5e7d\u4e09\u4e09", "to": "zhi-hu-zhi-da-41"}, {"arrows": "to", "from": "\u7c73\u7c73", "to": "pittbot"}, {"arrows": "to", "from": "\u7c73\u7c73", "to": "bot-22-51"}, {"arrows": "to", "from": "\u661f\u661f\u7684\u5fc3\u7075\u5947\u68b0\u6240", "to": "zhi-hu-zhi-da-41"}, {"arrows": "to", "from": "luckywwh", "to": "pittbot"}, {"arrows": "to", "from": "\u9b4f\u6c0f\u5b87\u5b99\u4e4b\u5bb6\u4e58\u5377", "to": "pittbot"}, {"arrows": "to", "from": "\u5976\u74f6", "to": "97-76-7-98-98"}, {"arrows": "to", "from": "\u5976\u74f6", "to": "pittbot"}, {"arrows": "to", "from": "97-76-7-98-98", "to": "\u5976\u74f6"}, {"arrows": "to", "from": "97-76-7-98-98", "to": "\u96f6\u4e00\u77e5\u5236\u8bf0"}, {"arrows": "to", "from": "97-76-7-98-98", "to": "\u9f50\u6602\u7684bot"}, {"arrows": "to", "from": "\u7834\u8327\u800c\u51fa", "to": "pittbot"}, {"arrows": "to", "from": "sdst", "to": "pittbot"}, {"arrows": "to", "from": "\u7a7a\u95f4\u4f7f\u8005", "to": "22-47-92-11"}, {"arrows": "to", "from": "22-47-92-11", "to": "\u7a7a\u95f4\u4f7f\u8005"}, {"arrows": "to", "from": "Maxwell", "to": "bost-39"}, {"arrows": "to", "from": "gobicowboy", "to": "bost-39"}, {"arrows": "to", "from": "gobicowboy", "to": "cao-zong-ying-58"}, {"arrows": "to", "from": "cao-zong-ying-58", "to": "\u6db5\u6811"}, {"arrows": "to", "from": "cao-zong-ying-58", "to": "gobicowboy"}, {"arrows": "to", "from": "bost-39", "to": "\u6db5\u6811"}, {"arrows": "to", "from": "bost-39", "to": "Maxwell"}, {"arrows": "to", "from": "bost-39", "to": "Eyre"}, {"arrows": "to", "from": "bost-39", "to": "\u770b\u5c71\u4e03\u5b50"}, {"arrows": "to", "from": "bost-39", "to": "\u51ac\u5b50"}, {"arrows": "to", "from": "bost-39", "to": "\u79d1\u6280\u9505"}, {"arrows": "to", "from": "bost-39", "to": "gobicowboy"}, {"arrows": "to", "from": "Eyre", "to": "bost-39"}, {"arrows": "to", "from": "\u6db5\u6811", "to": "bost-39"}, {"arrows": "to", "from": "\u6db5\u6811", "to": "cao-zong-ying-58"}, {"arrows": "to", "from": "\u770b\u5c71\u4e03\u5b50", "to": "bost-39"}, {"arrows": "to", "from": "\u79d1\u6280\u9505", "to": "bost-39"}, {"arrows": "to", "from": "\u4eca\u65e5\u6570\u667a", "to": "yjx1896"}, {"arrows": "to", "from": "\u674e\u56fd\u5b9d", "to": "tang-yu-39-42"}, {"arrows": "to", "from": "tang-yu-39-42", "to": "\u674e\u56fd\u5b9d"}, {"arrows": "to", "from": "yjx1896", "to": "\u4eca\u65e5\u6570\u667a"}, {"arrows": "to", "from": "zhi-hu-zhi-da-41", "to": "\u4e5d\u5e7d\u4e09\u4e09"}, {"arrows": "to", "from": "zhi-hu-zhi-da-41", "to": "\u661f\u661f\u7684\u5fc3\u7075\u5947\u68b0\u6240"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -80000,
+            "springConstant": 0.001,
+            "springLength": 250
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
