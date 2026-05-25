@@ -1,3 +1,5 @@
+> **中文** | [English](README_en.md)
+
 # 引力拓扑 (Gravity Topology)
 
 > 知乎黑客松参赛项目 — 基于空间计量与 A2A 机制的社交关系发现系统
